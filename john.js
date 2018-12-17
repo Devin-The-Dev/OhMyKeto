@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    // Click function for API call to search items  //  
-
+    // Click function for API call to search items and display to page //  
     $(".search").on("click", function () {
         event.preventDefault();
         name = $("#search-item").val().trim();
@@ -14,23 +13,26 @@ $(document).ready(function () {
             method: "GET",
         }).then(function (response) {
             console.log(response.hits)
+            $(".items").html("<h3> Items </h3>")
             for (var i = 0; i < 20; i++) {
                 var item = $("<div>");
-                item.addClass("item-style")
+                item.addClass("shop-list")
+                item.attr("data-name", response.hits[i].fields.item_name + "" + response.hits[i].fields.brand_name);
                 item.text(response.hits[i].fields.item_name + "" + response.hits[i].fields.brand_name + " calories: " + response.hits[i].fields.nf_calories);
                 $(".items").append(item);
             }
         })
     })
-   
-    // Click functions to add recipe //
 
+
+    // Click function to add recipe //
     $(".recipe").hide();
 
     $(".add").on("click", function () {
         $(".recipe").show();
     })
 
+    // Adds new recipe to recipe-list //
     $(".add-recipe").on("click", function () {
         event.preventDefault();
         var title = $("#title").val().trim();
