@@ -39,11 +39,25 @@ $(document).ready(function () {
         var url = $("#url").val().trim();
         var newRecipe = $("<div>")
         newRecipe.html("<a href= ' " + url + " ' >" + title + "</a>");
-        $(".recipe-list").prepend(newRecipe);
         $("#title").val("");
         $("#url").val("");
         $(".recipe").hide();
+
+        database.ref().push({
+            title: title,
+            url: url
+        });
+
+    });
+
+    database.ref().orderByChild('dateAdded').on('child_added', function (childSnapshot) {
+        var data = childSnapshot.val();
+        var url = data.url;
+        var title = data.title
+        var newRecipe = $('<div>');
+        newRecipe.html("<a href = '" + url + "'>" + title + "</a>");
+        $(".recipe-list").prepend(newRecipe);
     })
 
-})
+});
 
