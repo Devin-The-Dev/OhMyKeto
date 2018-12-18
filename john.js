@@ -1,4 +1,15 @@
 $(document).ready(function () {
+    var config = {
+        apiKey: "AIzaSyAdIivUmWDtf5rzdTD7Zu676BBGMnldDsY",
+        authDomain: "projectapi-bc143.firebaseapp.com",
+        databaseURL: "https://projectapi-bc143.firebaseio.com",
+        projectId: "projectapi-bc143",
+        storageBucket: "projectapi-bc143.appspot.com",
+        messagingSenderId: "630507404860"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
+
     // Click function for API call to search items and display to page //  
     $(".search").on("click", function () {
         event.preventDefault();
@@ -39,11 +50,25 @@ $(document).ready(function () {
         var url = $("#url").val().trim();
         var newRecipe = $("<div>")
         newRecipe.html("<a href= ' " + url + " ' >" + title + "</a>");
-        $(".recipe-list").prepend(newRecipe);
         $("#title").val("");
         $("#url").val("");
         $(".recipe").hide();
+
+        database.ref().push({
+            title: title,
+            url: url
+        });
+
+    });
+
+    database.ref().orderByChild('dateAdded').on('child_added', function (childSnapshot) {
+        var data = childSnapshot.val();
+        var url = data.url;
+        var title = data.title
+        var newRecipe = $('<div>');
+        newRecipe.html("<a href = '" + url + "'>" + title + "</a>");
+        $(".recipe-list").prepend(newRecipe);
     })
 
-})
+});
 
