@@ -1,11 +1,11 @@
 $(document).ready(function () {
     var config = {
-        apiKey: "AIzaSyAdIivUmWDtf5rzdTD7Zu676BBGMnldDsY",
-        authDomain: "projectapi-bc143.firebaseapp.com",
-        databaseURL: "https://projectapi-bc143.firebaseio.com",
-        projectId: "projectapi-bc143",
-        storageBucket: "projectapi-bc143.appspot.com",
-        messagingSenderId: "630507404860"
+        apiKey: "AIzaSyDVnx56uJHtku48XUqXXstq8cZuijLvT5k",
+        authDomain: "keto-4756a.firebaseapp.com",
+        databaseURL: "https://keto-4756a.firebaseio.com",
+        projectId: "keto-4756a",
+        storageBucket: "",
+        messagingSenderId: "964124781982"
     };
     firebase.initializeApp(config);
     var database = firebase.database();
