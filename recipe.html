@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recipes</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="john.js"></script>
+</head>
+
+<body>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="index.html" class="brand-logo">
+                <img src="image/ohmyketo-logo.jpg" width="60" height="60">
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="search.html">Search Items</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="search.html">Search Items</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div class="section no-pad-bot">
+        <div class="container">
+            <div class="row">
+                <button id="download-button" class="btn-large waves-effect waves-light teal lighten-1 add">Submit A
+                    Recipe</button>
+
+            </div>
+
+            <div class="recipe row">
+                <form class="col s4">
+                    <label for="title">Title</label>
+                    <input type="text" id="title">
+                    <label for="url">URL</label>
+                    <input type="url" id="url">
+                    <button type="submit" class="btn-large waves-effect teal add-recipe">Submit</button>
+                </form>
+            </div>
+            <div class="row recipe-list">
+
+            </div>
+            <div class="row">
+                <button id="download-button" class="btn-large waves-effect waves-light teal lighten-1 find">Find a
+                    recipe</button>
+            </div>
+            <div class="find-recipe row">
+                <form class="col s4">
+                    <label for="Ingredients">Ingredients</label>
+                    <input type="text" id="ingredients" placeholder="seperate ingredients with commas">
+                    
+                    <button type="submit" class="btn-large waves-effect teal search-recipe">Submit</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

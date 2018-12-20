@@ -5,7 +5,16 @@
  *
  * Made By MaterializeCSS.com
  */
-
+/* .add {
+  margin-top: 10px;
+  margin-left: 10px;
+} */
+.recipe-list {
+  margin-left: 12px;
+}
+a {
+  color: black;
+}
 nav ul a,
 nav .brand-logo {
   color: #444;

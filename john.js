@@ -10,12 +10,14 @@ $(document).ready(function () {
     firebase.initializeApp(config);
     var database = firebase.database();
 
-    // Click function for API call to search items and display to page //  
+    //Click function for API call to search items and display to page //  
     $(".search").on("click", function () {
         event.preventDefault();
+        $("tbody").empty();
         name = $("#search-item").val().trim();
         calorieMin = $("#cal-min").val().trim();
         calorieMax = $("#cal-max").val().trim();
+        brandName = $("#brand-name").val().trim();
         $("#search-item").val("");
         $("#cal-min").val("");
         $("#cal-max").val("");
@@ -24,13 +26,13 @@ $(document).ready(function () {
             method: "GET",
         }).then(function (response) {
             console.log(response.hits)
-            $(".items").html("<h3> Items </h3>")
+         
             for (var i = 0; i < 20; i++) {
-                var item = $("<div>");
-                item.addClass("shop-list")
-                item.attr("data-name", response.hits[i].fields.item_name + "" + response.hits[i].fields.brand_name);
-                item.text(response.hits[i].fields.item_name + "" + response.hits[i].fields.brand_name + " calories: " + response.hits[i].fields.nf_calories);
-                $(".items").append(item);
+                var table = `<tr>
+                <td>${response.hits[i].fields.item_name}</td>
+                <td>${response.hits[i].fields.brand_name}</td>
+                <td>${response.hits[i].fields.nf_calories}</td></tr>`
+                $("tbody").append(table);
             }
         })
     })
@@ -41,6 +43,7 @@ $(document).ready(function () {
 
     $(".add").on("click", function () {
         $(".recipe").show();
+        $(".add").hide();
     })
 
     // Adds new recipe to recipe-list //
@@ -53,6 +56,7 @@ $(document).ready(function () {
         $("#title").val("");
         $("#url").val("");
         $(".recipe").hide();
+        $(".add").show();
 
         database.ref().push({
             title: title,
@@ -68,6 +72,26 @@ $(document).ready(function () {
         var newRecipe = $('<div>');
         newRecipe.html("<a href = '" + url + "'>" + title + "</a>");
         $(".recipe-list").prepend(newRecipe);
+    })
+    // food to fork API call //
+    $(".find-recipe").hide();
+    $(".find").on("click", function() {
+        $(".find-recipe").show();
+        $(".find").hide();
+    })
+    $(".search-recipe").on("click", function () {
+        event.preventDefault();
+        var ingredients = $("#ingredients").val();
+        console.log(ingredients);
+        $.ajax({
+            url: "https://www.food2fork.com/api/search?key=489004e4c27559da0e4e5e6843fdb79e&q=" + ingredients + "&page=1",
+            method: "GET",
+        }).then(function(response) {
+           console.log(response)
+
+        })
+        $(".find").show();
+        $(".find-recipe").hide();
     })
 
 });
