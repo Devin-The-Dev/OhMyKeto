@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Keto Diet</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="css/style.css" rel="stylesheet" media="screen,projection">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script src="onthego.js"></script>
+    <style>
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: 100%;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .header {
+            text-align: center;
+            color: teal;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="index.html" class="brand-logo">
+                <img src="image/ohmyketo-logo.jpg" width="60" height="60">
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="search.html">Search Items</a></li>
+                <li><a href="recipe.html">Recipes</a></li>
+                <li><a href="onthego.html">On the Go</a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="search.html">Search Items</a></li>
+                <li><a href="recipe.html">Recipes</a></li>
+                <li><a href="onthego.html">On the Go</a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <h2 class="header">On the Go Resturant Keto</h2>
+    <br>
+    <div class="container">
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/BWW.jpg">
+                <img src="image/OnTheGo/BWW.jpg" alt="Buffalo Wild Wings" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/BoneFish.jpg">
+                <img src="image/OnTheGo/BoneFish.jpg" alt="BoneFish" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/CheeseCake.jpg">
+                <img src="image/OnTheGo/CheeseCake.jpg" alt="Cheese Cake Factory" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/Condiments.jpg">
+                <img src="image/OnTheGo/Condiments.jpg" alt="Condiments" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/DQ.jpg">
+                <img src="image/OnTheGo/DQ.jpg" alt="Dary Queen" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/Denny.jpg">
+                <img src="image/OnTheGo/Denny.jpg" alt="Denny" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/Dinner.jpg">
+                <img src="image/OnTheGo/Dinner.jpg" alt="Dinner" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/JerseyMike.jpg">
+                <img src="image/OnTheGo/JerseyMike.jpg" alt="Jersey Mike" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/Longjohn.jpg">
+                <img src="image/OnTheGo/Longjohn.jpg" alt="Long John" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/Moes.jpg">
+                <img src="image/OnTheGo/Moes.jpg" alt="Moes" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/OliveGarden.jpg">
+                <img src="image/OnTheGo/OliveGarden.jpg" alt="Olive Garden" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/Quiznos.jpg">
+                <img src="image/OnTheGo/Quiznos.jpg" alt="Quiznos" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/Subway.jpg">
+                <img src="image/OnTheGo/Subway.jpg" alt="Subway" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/Veggies.jpg">
+                <img src="image/OnTheGo/Veggies.jpg" alt="Veggies" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/applebees.jpg">
+                <img src="image/OnTheGo/applebees.jpg" alt="Apple Bees" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/arbys.jpg">
+                <img src="image/OnTheGo/arbys.jpg" alt="Arbys" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/bobevans.jpg">
+                <img src="image/OnTheGo/bobevans.jpg" alt="Bob Evans" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/bostonmarket.jpg">
+                <img src="image/OnTheGo/bostonmarket.jpg" alt="Boston Market" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/breakfast.jpg">
+                <img src="image/OnTheGo/breakfast.jpg" alt="Breakfast" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/burgerKing.jpg">
+                <img src="image/OnTheGo/burgerKing.jpg" alt="Burger King" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/chickfilA.jpg">
+                <img src="image/OnTheGo/chickfilA.jpg" alt="Chick fil A" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/chilis.jpg">
+                <img src="image/OnTheGo/chilis.jpg" alt="Chilis" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/chipotle.jpg">
+                <img src="image/OnTheGo/chipotle.jpg" alt="Chipotle" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/chipotles2.jpg">
+                <img src="image/OnTheGo/chipotles2.jpg" alt="Chipotle2" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/cicis.jpg">
+                <img src="image/OnTheGo/cicis.jpg" alt="Ci Ci's" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/crackerB.jpg">
+                <img src="image/OnTheGo/crackerB.jpg" alt="Cracker Barrel" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/dunkin.jpg">
+                <img src="image/OnTheGo/dunkin.jpg" alt="Dunkin Donuts" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/fiveguys.jpg">
+                <img src="image/OnTheGo/fiveguys.jpg" alt="Five Guys" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/gasStation.jpg">
+                <img src="image/OnTheGo/gasStation.jpg" alt="Gas Station" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/goldencorral.jpg">
+                <img src="image/OnTheGo/goldencorral.jpg"" alt=" Golden Corral" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/hooters.jpg">
+                <img src="image/OnTheGo/hooters.jpg" alt="Hooters" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/johnnyRocket.jpg">
+                <img src="image/OnTheGo/johnnyRocket.jpg" alt="Johnny Rocket" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/logans.jpg">
+                <img src="image/OnTheGo/logans.jpg" alt="Logans" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/lunch.jpg">
+                <img src="image/OnTheGo/lunch.jpg" alt="Lunch" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/ocharleys.jpg">
+                <img src="image/OnTheGo/ocharleys.jpg" alt="O'Charleys" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/ontheborder.jpg">
+                <img src="image/OnTheGo/ontheborder.jpg" alt="On The Border" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/paneria.jpg">
+                <img src="image/OnTheGo/paneria.jpg" alt="Paneria" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/papajohns.jpg">
+                <img src="image/OnTheGo/papajohns.jpg" alt="Papa Johns" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/proteins.jpg">
+                <img src="image/OnTheGo/proteins.jpg" alt="Proteins" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/redrobin.jpg">
+                <img src="image/OnTheGo/redrobin.jpg" alt="Red Robin" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/resturanthack.jpg">
+                <img src="image/OnTheGo/resturanthack.jpg" alt="Resturant Hack" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/sheetz.jpg">
+                <img src="image/OnTheGo/sheetz.jpg" alt="Sheetz" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/sidedish.jpg">
+                <img src="image/OnTheGo/sidedish.jpg" alt="Side Dish" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/sonic.jpg">
+                <img src="image/OnTheGo/sonic.jpg" alt="Sonic" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/starbucks.jpg">
+                <img src="image/OnTheGo/starbucks.jpg" alt="Star Bucks" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/tacoBell.jpg">
+                <img src="image/OnTheGo/tacoBell.jpg" alt="Taco Bell" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/texasRH.jpg">
+                <img src="image/OnTheGo/texasRH.jpg" alt="Texas Road House" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/wafflehouse.jpg">
+                <img src="image/OnTheGo/wafflehouse.jpg" alt="Waffle House" width="300" height="200">
+            </a>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="image/OnTheGo/wataburger.jpg">
+                <img src="image/OnTheGo/wataburger.jpg"" alt=" Wata Burger" width="300" height="200">
+            </a>
+        </div>
+
+    </div>
+</body>
+
+</html>
