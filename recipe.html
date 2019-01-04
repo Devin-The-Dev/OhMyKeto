@@ -14,6 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <script src="john.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Roboto+Condensed" rel="stylesheet">
 </head>
 
 <body>
@@ -26,6 +27,7 @@
                 <li><a href="login.html">Log In</a></li>
                 <li><a href="signup.html">Sign Up</a></li>
                 <li><a href="search.html">Search Items</a></li>
+                <li><a href="recipe.html">Recipes</a></li>
                 <li><a href="faq.html">FAQ</a></li>
             </ul>
 
@@ -39,8 +41,8 @@
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-    <div class="section no-pad-bot">
-        <div class="container">
+    <div class="recipe-wrapper" style="background-image:url(image/Keto2-1.jpg)">
+        <sidebar>
             <div class="row">
                 <button id="download-button" class="btn-large waves-effect waves-light teal lighten-1 add">Submit A
                     Recipe</button>
@@ -48,32 +50,45 @@
             </div>
 
             <div class="recipe row">
-                <form class="col s4">
-                    <label for="title">Title</label>
-                    <input type="text" id="title">
-                    <label for="url">URL</label>
-                    <input type="url" id="url">
+                <form class="col s4" style="padding-bottom: 10px; background: rgb(142, 148, 150)">
+                    <input type="text" id="title" placeholder="Title">
+                    <input type="url" id="url" placeholder="URL">
                     <button type="submit" class="btn-large waves-effect teal add-recipe">Submit</button>
                 </form>
             </div>
-            <div class="row recipe-list">
 
-            </div>
             <div class="row">
                 <button id="download-button" class="btn-large waves-effect waves-light teal lighten-1 find">Find a
                     recipe</button>
             </div>
             <div class="find-recipe row">
-                <form class="col s4">
+                <form class="col s4" style="padding-bottom: 10px; background: rgb(142, 148, 150)">
                     <label for="Ingredients">Ingredients</label>
                     <input type="text" id="ingredients" placeholder="seperate ingredients with commas">
-                    
+
                     <button type="submit" class="btn-large waves-effect teal search-recipe">Submit</button>
                 </form>
             </div>
 
+        </sidebar>
+        <div class="recipe-response center row" style="background:rgb(49, 113, 197);height:500px;overflow-y:scroll;">
+
         </div>
+        <section class="container center recipes black-text" style="font-family: 'Bree Serif', serif; border-radius: 10px; color: black ">
+            <h1>Welcome to the communites' recipe book!</h1>
+            <h5 style="font-family: 'Roboto Condensed', sans-serif;">The community recipe book is tried and true. Based on recipes found all across the web, this
+                recipe
+                resource will make meal planning as easy as possible. From breakfast to dinner, and everything in
+                between, you're sure to find something you love! <br><br>
+                Can't find anything you're craving? Click "Find A Recipe", and then just enter the ingredients that
+                you're in the mood for. You'll be provided with a recipe that we're confident will fit your tastes. <br><br>
+                And Remember, if you find something that you love that isn't found here, make sure and click "Submit A Recipe", and add it to the
+                recipe book so that the rest of us may enjoy it too!<br><br></h5>
+        </section>
+
     </div>
+    <div class="row recipe-list">
+
     </div>
 
 </body>
