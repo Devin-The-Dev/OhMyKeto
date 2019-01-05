@@ -9,8 +9,71 @@
   margin-top: 10px;
   margin-left: 10px;
 } */
+td:hover {background-color: rgb(204,217,223);}
+td {
+  background: #f5f5f5
+}
+
+.food-group {
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.food-group:hover {
+  background: #4e4e4e;
+  transform: scale(1.02, 1.02)
+}
+
+.nutrient-list {
+  margin-top: 10px;
+}
+
 .recipe-list {
   margin-left: 12px;
+  font-family: 'Bree Serif', serif;
+  font-size: 2em;
+  color: #444
+}
+.new-recipe {
+  transition: .3s;
+}
+.new-recipe:hover {
+  background: rgb(182,190,192);
+
+}
+#close {
+  font-size: 25px;
+  position: relative;
+  top: -28px;
+  left: 2px;
+}
+#close:hover {
+  cursor: pointer;
+}
+.recipe-img {
+  border-radius: 50%;
+}
+.recipe-text {
+  font-family: 'Bree Serif', serif;
+}
+  
+
+.add {
+  margin-left: -151px;
+  margin-top: 10px;
+  box-shadow: 5px 10px 8px #888888;
+  transition: 0.3s;
+}
+.add:hover {
+  margin-left: 0px;
+}
+.find {
+  margin-left: -131px;
+  box-shadow: 5px 10px 8px #888888;
+  transition: 0.3s;
+}
+.find:hover {
+  margin-left: 0px;
 }
 a {
   color: black;

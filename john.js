@@ -10,37 +10,71 @@ $(document).ready(function () {
     firebase.initializeApp(config);
     var database = firebase.database();
 
-    //Click function for API call to search items and display to page //  
+
+    //Click function for API calls to look up popular items and display to search.html page // 
+    $(".nutrient-list").hide();
     $(".search").on("click", function () {
         event.preventDefault();
+        $(".nutrient-list").show();
+        var foodGroup
         $("tbody").empty();
-        name = $("#search-item").val().trim();
-        calorieMin = $("#cal-min").val().trim();
-        calorieMax = $("#cal-max").val().trim();
-        brandName = $("#brand-name").val().trim();
-        $("#search-item").val("");
-        $("#cal-min").val("");
-        $("#cal-max").val("");
+
+        if ($('#dairy').is(':checked')) {
+            foodGroup = "0100";
+        }
+        if ($("#fats").is(":checked")) {
+            foodGroup = "0400";
+        }
+        if ($("#sausages").is(":checked")) {
+            foodGroup = "0700";
+        }
+        if ($("#breakfast").is(":checked")) {
+            foodGroup = "0800";
+        }
+        if ($("#poultry").is(":checked")) {
+            foodGroup = "0500";
+        }
+        if ($("#vegetables").is(":checked")) {
+            foodGroup = "1100";
+        }
+        if ($("#beef").is(":checked")) {
+            foodGroup = "1300"
+        }
+        if ($("#beverages").is(":checked")) {
+            foodGroup = "1400";
+        }
+        if ($("#test").is(":checked")) {
+            foodGroup = "1400";
+
+        }
+
         $.ajax({
-            url: "https://api.nutritionix.com/v1_1/search/" + name + "?results=0:20&cal_min=" + calorieMin + "&cal_max=" + calorieMax + "&fields=item_name,brand_name,item_id,nf_calories&appId=f6b91060&appKey=14e0ba5ac60549d774298df1a86ce3b8",
+            url: "https://api.nal.usda.gov/ndb/nutrients/?format=json&api_key=UhgPyozOLrjkN0aU9ThFj8KlE9VK1I1GrqPAky1a&nutrients=205&nutrients=204&nutrients=208&nutrients=269&fg=" + foodGroup,
             method: "GET",
         }).then(function (response) {
-            console.log(response.hits)
-         
-            for (var i = 0; i < 20; i++) {
+            var item = response.report.foods
+            for (var i = 0; i < item.length; i++) {
                 var table = `<tr>
-                <td>${response.hits[i].fields.item_name}</td>
-                <td>${response.hits[i].fields.brand_name}</td>
-                <td>${response.hits[i].fields.nf_calories}</td></tr>`
+                <td>${item[i].name}</td>
+                <td>${item[i].nutrients[3].value + "g"}</td>
+                <td>${item[i].nutrients[1].value + "g"}</td>
+                <td>${item[i].nutrients[2].value + "g"}</td> 
+                `
                 $("tbody").append(table);
+                console.log(response);
             }
+
         })
+
     })
 
 
-    // Click function to add recipe //
-    $(".recipe").hide();
 
+    //Sets up recipe.html //
+    $(".recipe").hide();
+    $("#error").hide();
+
+    // Click function to add recipe //
     $(".add").on("click", function () {
         $(".recipe").show();
         $(".add").hide();
@@ -51,18 +85,25 @@ $(document).ready(function () {
         event.preventDefault();
         var title = $("#title").val().trim();
         var url = $("#url").val().trim();
-        var newRecipe = $("<div>")
-        newRecipe.html("<a href= ' " + url + " ' >" + title + "</a>");
         $("#title").val("");
         $("#url").val("");
         $(".recipe").hide();
         $(".add").show();
 
-        database.ref().push({
-            title: title,
-            url: url
-        });
 
+        if (title === "" || url === "") {
+            $(".add").hide();
+            $(".recipe").show();
+            $("#error").show();
+        }
+
+        else {
+            database.ref().push({
+                title: title,
+                url: url
+            });
+            $("#error").hide();
+        }
     });
 
     database.ref().orderByChild('dateAdded').on('child_added', function (childSnapshot) {
@@ -70,29 +111,52 @@ $(document).ready(function () {
         var url = data.url;
         var title = data.title
         var newRecipe = $('<div>');
+        newRecipe.addClass("new-recipe")
         newRecipe.html("<a href = '" + url + "'>" + title + "</a>");
         $(".recipe-list").prepend(newRecipe);
     })
-    // food to fork API call //
+    //Sets up recipe page//
+    $(".recipe-response").hide();
     $(".find-recipe").hide();
-    $(".find").on("click", function() {
+    $(".find").on("click", function () {
         $(".find-recipe").show();
         $(".find").hide();
     })
+    // EDAMAM API call //
     $(".search-recipe").on("click", function () {
         event.preventDefault();
         var ingredients = $("#ingredients").val();
         console.log(ingredients);
         $.ajax({
-            url: "https://www.food2fork.com/api/search?key=489004e4c27559da0e4e5e6843fdb79e&q=" + ingredients + "&page=1",
+            url: "https://api.edamam.com/search?q=" + ingredients + "&app_id=ff87945f&app_key=caab8e28705b4cb0c808f0d05d770add",
             method: "GET",
-        }).then(function(response) {
-           console.log(response)
-
+        }).then(function (response) {
+            console.log(response.hits)
+            console.log(response.hits[0].recipe.label)
+            for (var i = 0; i < 10; i++) {
+                var recipe = $("<span>")
+                recipe.addClass("recipe-text")
+                var image = $("<img>")
+                image.attr("src", response.hits[i].recipe.image);
+                image.addClass("recipe-img");
+                recipe.append(image);
+                var title = $("<p>");
+                title.html("<a href = '" + response.hits[i].recipe.url + "'>" + response.hits[i].recipe.label + "</a>")
+                recipe.prepend(title);
+                $(".recipe-response").append(recipe);
+            }
+            $(".find").show();
+            $(".find-recipe").hide();
+            $(".recipe-response").show();
+            $("#ingredients").val("");
         })
-        $(".find").show();
-        $(".find-recipe").hide();
     })
+
+    $("#close").on("click", function(){
+        $(".recipe-response").hide();
+        $(".recipe-response").empty();
+    })
+  
 
 });
 
