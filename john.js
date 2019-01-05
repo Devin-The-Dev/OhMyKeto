@@ -43,9 +43,16 @@ $(document).ready(function () {
         if ($("#beverages").is(":checked")) {
             foodGroup = "1400";
         }
-        if ($("#test").is(":checked")) {
-            foodGroup = "1400";
+        if ($("#sweets").is(":checked")) {
+            foodGroup = "1900";
 
+        }
+        if ($("#fastFoods").is(":checked")) {
+            foodGroup = "2100";
+
+        }
+        if ($("#pork").is(":checked")) {
+            foodGroup = "1000";
         }
 
         $.ajax({
@@ -152,11 +159,11 @@ $(document).ready(function () {
         })
     })
 
-    $("#close").on("click", function(){
+    $("#close").on("click", function () {
         $(".recipe-response").hide();
         $(".recipe-response").empty();
     })
-  
+
 
 });
 
