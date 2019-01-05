@@ -30,16 +30,19 @@ td {
 
 .recipe-list {
   margin-left: 12px;
-  font-family: 'Bree Serif', serif;
   font-size: 2em;
-  color: rgb(36,41,46);
+  width: 98%;
 }
 .new-recipe {
   transition: .3s;
 }
 .new-recipe:hover {
-  background: rgb(255, 255, 255);
+  transform: scale(1.09,1.09)
 
+}
+.recipe-response {
+  position: relative;
+  z-index: 10;
 }
 #close {
   font-size: 25px;
