@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Roboto+Condensed" rel="stylesheet">
 </head>
 
-<body>
+<body style="background: rgb(204,217,223)">
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="index.html" class="brand-logo">
@@ -53,6 +53,7 @@
                 <form class="col s4" style="padding-bottom: 10px; background: rgb(142, 148, 150)">
                     <input type="text" id="title" placeholder="Title">
                     <input type="url" id="url" placeholder="URL">
+                    <p id="error" style="color:rgb(206, 9, 9)">Please make sure all text boxes are filled</p>
                     <button type="submit" class="btn-large waves-effect teal add-recipe">Submit</button>
                 </form>
             </div>
@@ -71,8 +72,8 @@
             </div>
 
         </sidebar>
-        <div class="recipe-response center row" style="background:rgb(49, 113, 197);height:500px;overflow-y:scroll;">
-
+        <div class="recipe-response center row" style="background:rgb(255,255,255,.9); box-shadow: 5px 10px 8px #888888; border: 1px solid rgb(142, 148, 150) ; width: 900px; height:500px;overflow-y:scroll;">
+            <p class="left row" id="close">X</p>
         </div>
         <section class="container center recipes black-text" style="font-family: 'Bree Serif', serif; border-radius: 10px; color: black ">
             <h1>Welcome to the communites' recipe book!</h1>

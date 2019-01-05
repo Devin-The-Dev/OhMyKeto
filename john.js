@@ -70,9 +70,11 @@ $(document).ready(function () {
 
 
 
-    // Click function to add recipe //
+    //Sets up recipe.html //
     $(".recipe").hide();
+    $("#error").hide();
 
+    // Click function to add recipe //
     $(".add").on("click", function () {
         $(".recipe").show();
         $(".add").hide();
@@ -88,10 +90,11 @@ $(document).ready(function () {
         $(".recipe").hide();
         $(".add").show();
 
+
         if (title === "" || url === "") {
-            alert("Please make sure the text boxes are filled")
             $(".add").hide();
             $(".recipe").show();
+            $("#error").show();
         }
 
         else {
@@ -99,6 +102,7 @@ $(document).ready(function () {
                 title: title,
                 url: url
             });
+            $("#error").hide();
         }
     });
 
@@ -108,7 +112,7 @@ $(document).ready(function () {
         var title = data.title
         var newRecipe = $('<div>');
         newRecipe.addClass("new-recipe")
-        newRecipe.html("<a href = '" + url + "'>" + title + "</a>" + "<hr>");
+        newRecipe.html("<a href = '" + url + "'>" + title + "</a>");
         $(".recipe-list").prepend(newRecipe);
     })
     //Sets up recipe page//
@@ -134,6 +138,7 @@ $(document).ready(function () {
                 recipe.addClass("recipe-text")
                 var image = $("<img>")
                 image.attr("src", response.hits[i].recipe.image);
+                image.addClass("recipe-img");
                 recipe.append(image);
                 var title = $("<p>");
                 title.html("<a href = '" + response.hits[i].recipe.url + "'>" + response.hits[i].recipe.label + "</a>")
@@ -143,8 +148,15 @@ $(document).ready(function () {
             $(".find").show();
             $(".find-recipe").hide();
             $(".recipe-response").show();
+            $("#ingredients").val("");
         })
     })
+
+    $("#close").on("click", function(){
+        $(".recipe-response").hide();
+        $(".recipe-response").empty();
+    })
+  
 
 });
 
